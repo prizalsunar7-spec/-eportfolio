@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bootstrap — ePortfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .bs-demo-area {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+
+    .utility-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      margin-top: 1rem;
+    }
+    .utility-table th {
+      background: var(--ink);
+      color: #fff;
+      padding: 0.6rem 1rem;
+      text-align: left;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+    }
+    .utility-table td {
+      padding: 0.55rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .utility-table tr:last-child td { border-bottom: none; }
+    .utility-table td:first-child {
+      font-family: 'Roboto Mono', monospace;
+      color: var(--accent);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+    .utility-table td:last-child { color: var(--muted); font-size: 0.83rem; }
+  </style>
+</head>
+<body>
+
+<!-- ACTIVE TOPIC BADGE -->
+<div class="active-topic-badge">04 · Bootstrap</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="index.html" class="brand">ePortfolio</a>
+  <a href="fullstack.html">Full Stack</a>
+  <a href="html.html">HTML</a>
+  <a href="css.html">CSS</a>
+  <a href="bootstrap.html" class="active">Bootstrap</a>
+  <a href="javascript.html">JavaScript</a>
+</nav>
+
+<!-- MAIN SECTION -->
+<section class="section" id="bootstrap">
+  <div class="container">
+    <h2 class="section-title"><span>Bootstrap</span><br>Framework</h2>
+    <p class="lead-text">
+      Bootstrap is the world's most popular open-source CSS framework, originally created at Twitter in 2011. It provides a responsive 12-column grid system, pre-styled components (buttons, cards, modals, navbars), and utility classes — allowing developers to build mobile-first, professional-looking interfaces rapidly without writing CSS from scratch. Bootstrap 5 dropped jQuery as a dependency, relying on vanilla JS instead.
+    </p>
+
+    <!-- Grid Demo -->
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · bootstrap grid system</span>
+      </div>
+      <div class="demo-card-body">
+        <h3 style="font-family:'Playfair Display',serif; margin-bottom:0.8rem;">Demonstration: Responsive 12-Column Grid</h3>
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;">Bootstrap's grid uses <code>col-*</code> classes. Resize your browser window — columns collapse to full width on small screens automatically because Bootstrap is <em>mobile-first</em>.</p>
+
+        <div class="bs-demo-area">
+          <div class="row g-3 mb-3">
+            <div class="col-md-4"><div class="p-3 bg-danger text-white rounded text-center fw-bold" style="font-size:.85rem">col-md-4</div></div>
+            <div class="col-md-4"><div class="p-3 bg-danger text-white rounded text-center fw-bold" style="font-size:.85rem">col-md-4</div></div>
+            <div class="col-md-4"><div class="p-3 bg-danger text-white rounded text-center fw-bold" style="font-size:.85rem">col-md-4</div></div>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-md-8"><div class="p-3 bg-dark text-white rounded text-center fw-bold" style="font-size:.85rem">col-md-8 (main content)</div></div>
+            <div class="col-md-4"><div class="p-3 bg-secondary text-white rounded text-center fw-bold" style="font-size:.85rem">col-md-4 (sidebar)</div></div>
+          </div>
+          <div class="row g-3">
+            <div class="col-6 col-md-3"><div class="p-3 bg-warning rounded text-center fw-bold" style="font-size:.85rem">col-6 col-md-3</div></div>
+            <div class="col-6 col-md-3"><div class="p-3 bg-warning rounded text-center fw-bold" style="font-size:.85rem">col-6 col-md-3</div></div>
+            <div class="col-6 col-md-3"><div class="p-3 bg-warning rounded text-center fw-bold" style="font-size:.85rem">col-6 col-md-3</div></div>
+            <div class="col-6 col-md-3"><div class="p-3 bg-warning rounded text-center fw-bold" style="font-size:.85rem">col-6 col-md-3</div></div>
+          </div>
+        </div>
+
+        <div class="code-block" style="margin-top:1.2rem"><span class="cm">&lt;!-- 3 equal columns on medium screens and above --&gt;</span>
+<span class="kw">&lt;div</span> <span class="attr">class</span>=<span class="str">"row g-3"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span> <span class="attr">class</span>=<span class="str">"col-md-4"</span><span class="kw">&gt;</span>Column 1<span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span> <span class="attr">class</span>=<span class="str">"col-md-4"</span><span class="kw">&gt;</span>Column 2<span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span> <span class="attr">class</span>=<span class="str">"col-md-4"</span><span class="kw">&gt;</span>Column 3<span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span>
+
+<span class="cm">&lt;!-- Different width on small vs large: col-6 (50%) on mobile, col-md-3 (25%) on desktop --&gt;</span>
+<span class="kw">&lt;div</span> <span class="attr">class</span>=<span class="str">"col-6 col-md-3"</span><span class="kw">&gt;</span>Responsive<span class="kw">&lt;/div&gt;</span></div>
+        <div class="info-box">
+          <strong>Mobile-first means:</strong> start with the small-screen layout (no suffix, or <code>col-sm-*</code>), then override for larger breakpoints with <code>col-md-*</code>, <code>col-lg-*</code>, etc. This is better for performance — mobile devices download the base styles and skip the larger-screen overrides.
+        </div>
+      </div>
+    </div>
+
+    <!-- Components Demo -->
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · bootstrap components</span>
+      </div>
+      <div class="demo-card-body">
+        <h3 style="font-family:'Playfair Display',serif; margin-bottom:0.8rem;">Demonstration: Bootstrap Components</h3>
+
+        <div class="bs-demo-area">
+          <!-- Buttons -->
+          <p class="fw-bold mb-2" style="font-size:.85rem">Buttons — utility classes only:</p>
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <button class="btn btn-primary">btn-primary</button>
+            <button class="btn btn-danger">btn-danger</button>
+            <button class="btn btn-outline-dark">btn-outline-dark</button>
+            <button class="btn btn-warning btn-sm">btn-sm</button>
+            <button class="btn btn-success btn-lg">btn-lg</button>
+          </div>
+
+          <!-- Alert -->
+          <p class="fw-bold mb-2" style="font-size:.85rem">Alerts:</p>
+          <div class="alert alert-info" role="alert">
+            <strong>Info:</strong> Bootstrap alerts use ARIA <code>role="alert"</code> for accessibility.
+          </div>
+          <div class="alert alert-success" role="alert">
+            <strong>Success!</strong> Your form was submitted successfully.
+          </div>
+
+          <!-- Badge + Progress -->
+          <p class="fw-bold mb-2" style="font-size:.85rem">Badges &amp; Progress:</p>
+          <div class="mb-3">
+            <span class="badge bg-danger me-1">HTML</span>
+            <span class="badge bg-dark me-1">CSS</span>
+            <span class="badge bg-warning text-dark me-1">Bootstrap</span>
+            <span class="badge bg-success">JavaScript</span>
+          </div>
+          <div class="progress mb-4" style="height:10px;">
+            <div class="progress-bar bg-danger" style="width:80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+
+          <!-- Card component -->
+          <p class="fw-bold mb-2" style="font-size:.85rem">Bootstrap Card:</p>
+          <div class="row">
+            <div class="col-md-5">
+              <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white fw-bold" style="font-size:.85rem">Module Card</div>
+                <div class="card-body">
+                  <h5 class="card-title" style="font-size:.95rem">JavaScript Fundamentals</h5>
+                  <p class="card-text" style="font-size:.82rem">Learn variables, functions, DOM manipulation, events, and asynchronous programming.</p>
+                  <a href="javascript.html" class="btn btn-sm btn-danger">Go to Section →</a>
+                </div>
+                <div class="card-footer text-muted" style="font-size:.75rem">Module 5 of 5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block" style="margin-top:1.2rem"><span class="cm">&lt;!-- Bootstrap card — no custom CSS needed --&gt;</span>
+<span class="kw">&lt;div</span> <span class="attr">class</span>=<span class="str">"card shadow-sm"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span> <span class="attr">class</span>=<span class="str">"card-header bg-dark text-white"</span><span class="kw">&gt;</span>Header<span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;div</span> <span class="attr">class</span>=<span class="str">"card-body"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;h5</span> <span class="attr">class</span>=<span class="str">"card-title"</span><span class="kw">&gt;</span>Title<span class="kw">&lt;/h5&gt;</span>
+    <span class="kw">&lt;a</span> <span class="attr">class</span>=<span class="str">"btn btn-danger"</span> <span class="attr">href</span>=<span class="str">"#"</span><span class="kw">&gt;</span>Action<span class="kw">&lt;/a&gt;</span>
+  <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/div&gt;</span></div>
+        <div class="info-box">
+          <strong>How Bootstrap works:</strong> It ships a single CSS file (~200 KB minified) containing thousands of utility classes and component styles. Classes like <code>d-flex</code>, <code>mb-3</code>, <code>col-md-4</code> are atomic — each does one thing. Combined, they eliminate the need to write repetitive custom CSS for the majority of UI patterns.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UTILITY CLASSES REFERENCE -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Reference</div>
+    <h2 class="section-title">Utility <span>Classes</span></h2>
+    <p class="lead-text">
+      Bootstrap 5's utility API provides atomic classes covering spacing, flexbox, typography, colours, borders, shadows, and display. These replace repetitive one-line CSS rules.
+    </p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">commonly used utility classes</span>
+      </div>
+      <div class="demo-card-body">
+        <table class="utility-table">
+          <thead>
+            <tr><th>Class</th><th>CSS equivalent</th><th>Use case</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>d-flex</td><td>display: flex</td><td>Enable flexbox on a container</td></tr>
+            <tr><td>align-items-center</td><td>align-items: center</td><td>Vertically centre flex children</td></tr>
+            <tr><td>justify-content-between</td><td>justify-content: space-between</td><td>Push flex items to opposite ends</td></tr>
+            <tr><td>gap-2</td><td>gap: 0.5rem</td><td>Space between flex/grid children</td></tr>
+            <tr><td>m-3 / mt-2 / mb-4</td><td>margin: 1rem / margin-top / bottom</td><td>Spacing shorthand (0–5 scale)</td></tr>
+            <tr><td>p-3 / px-2 / py-4</td><td>padding: 1rem / horizontal / vertical</td><td>Padding shorthand (0–5 scale)</td></tr>
+            <tr><td>text-center</td><td>text-align: center</td><td>Horizontally centre text</td></tr>
+            <tr><td>fw-bold</td><td>font-weight: 700</td><td>Bold text</td></tr>
+            <tr><td>text-muted</td><td>color: #6c757d</td><td>Secondary grey text</td></tr>
+            <tr><td>bg-dark</td><td>background-color: #212529</td><td>Dark background</td></tr>
+            <tr><td>rounded</td><td>border-radius: 0.375rem</td><td>Rounded corners</td></tr>
+            <tr><td>shadow-sm</td><td>box-shadow: 0 0.125rem 0.25rem …</td><td>Subtle card shadow</td></tr>
+            <tr><td>w-100</td><td>width: 100%</td><td>Full-width element</td></tr>
+            <tr><td>d-none d-md-block</td><td>display:none → display:block at md</td><td>Hide on mobile, show on desktop</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box" style="margin-top:1rem">
+          <strong>Spacing scale:</strong> Bootstrap uses a <code>$spacer</code> base of <code>1rem</code>. Class numbers map as: 0 → 0, 1 → 0.25rem, 2 → 0.5rem, 3 → 1rem, 4 → 1.5rem, 5 → 3rem. So <code>mb-4</code> = <code>margin-bottom: 1.5rem</code>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOTSTRAP BREAKPOINTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Deep Dive</div>
+    <h2 class="section-title">Responsive <span>Breakpoints</span></h2>
+    <p class="lead-text">
+      Bootstrap's grid and many utility classes use six breakpoints defined as min-width media queries. Because Bootstrap is mobile-first, each breakpoint activates at the specified width and wider.
+    </p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">bootstrap 5 breakpoints</span>
+      </div>
+      <div class="demo-card-body">
+        <table class="utility-table">
+          <thead>
+            <tr><th>Prefix</th><th>Min-width</th><th>Device target</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>(none)</td><td>0px — all screens</td><td>Extra small: portrait phones</td></tr>
+            <tr><td>sm</td><td>≥ 576px</td><td>Small: landscape phones</td></tr>
+            <tr><td>md</td><td>≥ 768px</td><td>Medium: tablets</td></tr>
+            <tr><td>lg</td><td>≥ 992px</td><td>Large: desktops</td></tr>
+            <tr><td>xl</td><td>≥ 1200px</td><td>Extra large: large desktops</td></tr>
+            <tr><td>xxl</td><td>≥ 1400px</td><td>Extra extra large: wide monitors</td></tr>
+          </tbody>
+        </table>
+
+        <div class="code-block" style="margin-top:1.2rem"><span class="cm">/* Bootstrap generates classes like: */</span>
+<span class="kw">@media</span> (<span class="attr">min-width</span>: <span class="val">768px</span>) {
+  <span class="attr">.col-md-4</span> { <span class="attr">width</span>: <span class="val">33.3333%</span>; }
+  <span class="attr">.d-md-block</span> { <span class="attr">display</span>: <span class="val">block</span> <span class="val">!important</span>; }
+  <span class="attr">.d-md-none</span>  { <span class="attr">display</span>: <span class="val">none</span>  <span class="val">!important</span>; }
+}</div>
+        <div class="info-box">
+          <strong>Practical pattern:</strong> <code>col-12 col-md-6 col-lg-4</code> — full width on mobile, half-width on tablet, one-third on desktop. This single class string handles three different layouts without a single media query written by hand.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>ePortfolio · Full Stack Development · <span>HTML · CSS · Bootstrap · JavaScript</span></p>
+  <p style="margin-top:0.5rem;opacity:0.5;">Built with semantic HTML5, custom CSS, Bootstrap 5 &amp; Vanilla JS</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

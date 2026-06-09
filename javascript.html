@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript — ePortfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* Calculator */
+    .calc-wrap { display: flex; justify-content: center; margin-top: 1rem; }
+    .calc {
+      background: var(--ink);
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 280px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    }
+    .calc-display {
+      background: #0d1117;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      text-align: right;
+      margin-bottom: 1rem;
+    }
+    .calc-expr { font-family: 'Roboto Mono', monospace; font-size: 0.75rem; color: rgba(255,255,255,0.4); min-height: 1.2em; }
+    .calc-val  { font-family: 'Roboto Mono', monospace; font-size: 2rem; color: #fff; word-break: break-all; }
+    .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .calc-btn {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 8px;
+      padding: 0.9rem 0;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      background: #1e2030;
+      color: #fff;
+    }
+    .calc-btn:hover  { opacity: 0.8; }
+    .calc-btn:active { transform: scale(0.95); }
+    .calc-btn.op     { background: #c0392b; }
+    .calc-btn.eq     { background: var(--gold); color: var(--ink); }
+    .calc-btn.span2  { grid-column: span 2; }
+
+    /* To-Do */
+    .todo-wrap { margin-top: 1rem; }
+    .todo-input-row { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .todo-input {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.55rem 0.9rem;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.9rem;
+      background: #fff;
+      color: var(--ink);
+    }
+    .todo-input:focus { outline: 2px solid var(--accent); }
+    .todo-add-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.55rem 1.1rem;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .todo-add-btn:hover { opacity: 0.85; }
+    .todo-list { list-style: none; }
+    .todo-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.6rem 0.8rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      animation: slideIn 0.25s ease;
+    }
+    @keyframes slideIn { from { opacity:0; transform:translateX(-12px); } to { opacity:1; transform:none; } }
+    .todo-item.done span { text-decoration: line-through; color: var(--muted); }
+    .todo-check { width: 18px; height: 18px; cursor: pointer; accent-color: var(--accent); }
+    .todo-del {
+      margin-left: auto;
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .todo-del:hover { color: var(--accent); }
+    .todo-counter { font-family: 'Roboto Mono', monospace; font-size: 0.7rem; color: var(--muted); margin-top: 0.5rem; }
+
+    /* Concepts grid */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .concept-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.3rem;
+    }
+    .concept-card h5 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .concept-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    @media (max-width: 640px) { .calc { width: 100%; } }
+  </style>
+</head>
+<body>
+
+<!-- ACTIVE TOPIC BADGE -->
+<div class="active-topic-badge">05 · JavaScript</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="index.html" class="brand">ePortfolio</a>
+  <a href="fullstack.html">Full Stack</a>
+  <a href="html.html">HTML</a>
+  <a href="css.html">CSS</a>
+  <a href="bootstrap.html">Bootstrap</a>
+  <a href="javascript.html" class="active">JavaScript</a>
+</nav>
+
+<!-- MAIN SECTION -->
+<section class="section" id="javascript">
+  <div class="container">
+    <h2 class="section-title"><span>JavaScript</span> —<br>Interactivity &amp; Logic</h2>
+    <p class="lead-text">
+      JavaScript (JS) is the only programming language that runs natively in web browsers. It enables dynamic behaviour: responding to user events, updating the DOM without page reloads, fetching data from APIs, validating forms, and running complex application logic. ES6+ (2015 and beyond) brought classes, arrow functions, destructuring, promises, modules, and <code>async/await</code> — transforming JS into a modern, powerful language.
+    </p>
+
+    <!-- Demo 1: Calculator -->
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · interactive calculator</span>
+      </div>
+      <div class="demo-card-body">
+        <h3 style="font-family:'Playfair Display',serif; margin-bottom:0.5rem;">Demonstration 1: Working Calculator</h3>
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;">A fully functional calculator built with vanilla JavaScript. Demonstrates state management via module-level variables, event-driven architecture using inline <code>onclick</code> handlers, and a computed operations object to avoid verbose switch statements.</p>
+
+        <div class="calc-wrap">
+          <div class="calc">
+            <div class="calc-display">
+              <div class="calc-expr" id="calc-expr"></div>
+              <div class="calc-val"  id="calc-val">0</div>
+            </div>
+            <div class="calc-grid">
+              <button class="calc-btn op"    onclick="calcFn('clear')">AC</button>
+              <button class="calc-btn op"    onclick="calcFn('sign')">±</button>
+              <button class="calc-btn op"    onclick="calcFn('percent')">%</button>
+              <button class="calc-btn op eq" onclick="calcFn('op','/')">÷</button>
+
+              <button class="calc-btn" onclick="calcFn('num','7')">7</button>
+              <button class="calc-btn" onclick="calcFn('num','8')">8</button>
+              <button class="calc-btn" onclick="calcFn('num','9')">9</button>
+              <button class="calc-btn op" onclick="calcFn('op','*')">×</button>
+
+              <button class="calc-btn" onclick="calcFn('num','4')">4</button>
+              <button class="calc-btn" onclick="calcFn('num','5')">5</button>
+              <button class="calc-btn" onclick="calcFn('num','6')">6</button>
+              <button class="calc-btn op" onclick="calcFn('op','-')">−</button>
+
+              <button class="calc-btn" onclick="calcFn('num','1')">1</button>
+              <button class="calc-btn" onclick="calcFn('num','2')">2</button>
+              <button class="calc-btn" onclick="calcFn('num','3')">3</button>
+              <button class="calc-btn op" onclick="calcFn('op','+')">+</button>
+
+              <button class="calc-btn span2" onclick="calcFn('num','0')">0</button>
+              <button class="calc-btn"       onclick="calcFn('dot')">.</button>
+              <button class="calc-btn eq"    onclick="calcFn('equals')">=</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block" style="margin-top:1.5rem"><span class="cm">// Core calculator state &amp; logic</span>
+<span class="kw">let</span> current = <span class="str">''</span>, previous = <span class="str">''</span>, operator = <span class="str">''</span>;
+
+<span class="kw">function</span> <span class="attr">calcFn</span>(type, val) {
+  <span class="kw">if</span> (type === <span class="str">'num'</span>) {
+    current += val;
+  } <span class="kw">else if</span> (type === <span class="str">'op'</span>) {
+    previous = current; current = <span class="str">''</span>; operator = val;
+  } <span class="kw">else if</span> (type === <span class="str">'equals'</span>) {
+    <span class="kw">const</span> a = <span class="val">parseFloat</span>(previous), b = <span class="val">parseFloat</span>(current);
+    <span class="kw">const</span> ops = { <span class="str">'+'</span>: a+b, <span class="str">'-'</span>: a-b, <span class="str">'*'</span>: a*b, <span class="str">'/'</span>: a/b };
+    current = <span class="val">String</span>(ops[operator]);
+  }
+  <span class="attr">updateDisplay</span>();
+}</div>
+        <div class="info-box">
+          <strong>Key concepts:</strong> The calculator uses <em>state variables</em> (current, previous, operator), an <em>event-driven</em> architecture (onclick attributes call calcFn), and a <em>computed object</em> (ops) to avoid a verbose switch statement. DOM updates happen in a single <code>updateDisplay()</code> function — a unidirectional data-flow pattern mirrored by React and Vue.
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo 2: To-Do List -->
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · dynamic to-do list</span>
+      </div>
+      <div class="demo-card-body">
+        <h3 style="font-family:'Playfair Display',serif; margin-bottom:0.5rem;">Demonstration 2: Dynamic To-Do List</h3>
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;">Add, complete, and delete tasks. Demonstrates array state management, DOM reconstruction via <code>innerHTML</code>, template literals, and event delegation.</p>
+
+        <div class="todo-wrap">
+          <div class="todo-input-row">
+            <input class="todo-input" id="todo-input" type="text" placeholder="Add a new task…" maxlength="80" />
+            <button class="todo-add-btn" onclick="addTodo()">Add</button>
+          </div>
+          <ul class="todo-list" id="todo-list"></ul>
+          <div class="todo-counter" id="todo-counter">0 tasks</div>
+        </div>
+
+        <div class="code-block" style="margin-top:1.2rem"><span class="cm">// JavaScript: add &amp; render tasks</span>
+<span class="kw">let</span> tasks = [];
+
+<span class="kw">function</span> <span class="attr">addTodo</span>() {
+  <span class="kw">const</span> text = document.<span class="attr">getElementById</span>(<span class="str">'todo-input'</span>).value.trim();
+  <span class="kw">if</span> (!text) <span class="kw">return</span>;
+  tasks.<span class="attr">push</span>({ id: Date.<span class="attr">now</span>(), text, done: <span class="val">false</span> });
+  <span class="attr">renderTodos</span>();
+}
+
+<span class="kw">function</span> <span class="attr">renderTodos</span>() {
+  <span class="kw">const</span> list = document.<span class="attr">getElementById</span>(<span class="str">'todo-list'</span>);
+  list.innerHTML = tasks.<span class="attr">map</span>(t =&gt; <span class="str">`
+    &lt;li class="${t.done ? 'done' : ''}"&gt;
+      &lt;input type="checkbox" ${t.done ? 'checked' : ''}
+        onchange="toggleTodo(${t.id})"&gt;
+      &lt;span&gt;${t.text}&lt;/span&gt;
+      &lt;button onclick="removeTodo(${t.id})"&gt;✕&lt;/button&gt;
+    &lt;/li&gt;`</span>).<span class="attr">join</span>(<span class="str">''</span>);
+}</div>
+        <div class="info-box">
+          <strong>Key concepts:</strong> Tasks are stored in a JavaScript <em>array of objects</em>. Every state change (add, toggle, remove) mutates the array then calls <code>renderTodos()</code>, which rebuilds the list HTML using <code>Array.map()</code> and a template literal. This one-directional data flow mirrors the pattern used in React and Vue. <code>escHtml()</code> sanitises text to prevent XSS injection.
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo 3: Live DOM -->
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · DOM manipulation &amp; events</span>
+      </div>
+      <div class="demo-card-body">
+        <h3 style="font-family:'Playfair Display',serif; margin-bottom:0.5rem;">Demonstration 3: Real-Time DOM Manipulation</h3>
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;">Type in the box and move the slider — the preview updates live using the <code>input</code> event. Demonstrates <code>addEventListener</code>, property binding, and live DOM updates without page reloads.</p>
+
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:flex-start;">
+          <div style="flex:1; min-width:200px;">
+            <label style="font-size:0.8rem;font-weight:700;display:block;margin-bottom:0.4rem;">Your name:</label>
+            <input id="live-name" type="text" class="todo-input" placeholder="Type here…" oninput="updateLive()" />
+            <label style="font-size:0.8rem;font-weight:700;display:block;margin-top:0.8rem;margin-bottom:0.4rem;">Font size: <span id="size-label">28</span>px</label>
+            <input type="range" id="live-size" min="14" max="60" value="28" oninput="updateLive()" style="width:100%;accent-color:var(--accent)"/>
+          </div>
+          <div style="flex:1; min-width:200px; display:flex; align-items:center; justify-content:center;
+                      background:var(--ink); border-radius:8px; padding:1.5rem; min-height:110px;">
+            <span id="live-output" style="font-family:'Playfair Display',serif; color:var(--paper); font-size:28px; word-break:break-all; text-align:center;">Hello!</span>
+          </div>
+        </div>
+
+        <div class="code-block" style="margin-top:1.2rem"><span class="cm">// Real-time DOM update on user input</span>
+<span class="kw">function</span> <span class="attr">updateLive</span>() {
+  <span class="kw">const</span> name   = document.<span class="attr">getElementById</span>(<span class="str">'live-name'</span>).value;
+  <span class="kw">const</span> size   = document.<span class="attr">getElementById</span>(<span class="str">'live-size'</span>).value;
+  <span class="kw">const</span> output = document.<span class="attr">getElementById</span>(<span class="str">'live-output'</span>);
+
+  output.textContent       = name || <span class="str">'Hello!'</span>;
+  output.style.fontSize    = size + <span class="str">'px'</span>;
+  <span class="cm">// Update label too</span>
+  document.<span class="attr">getElementById</span>(<span class="str">'size-label'</span>).textContent = size;
+}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE JS CONCEPTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Reference</div>
+    <h2 class="section-title">Core JS <span>Concepts</span></h2>
+    <p class="lead-text">
+      JavaScript's power comes from a handful of foundational concepts that every developer needs to understand. Here are the most important ones with concise explanations.
+    </p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">javascript fundamentals overview</span>
+      </div>
+      <div class="demo-card-body">
+        <div class="concept-grid">
+          <div class="concept-card">
+            <h5>Closures</h5>
+            <p>A function that retains access to variables in its outer scope even after the outer function has returned. Enables private state and factory functions.</p>
+          </div>
+          <div class="concept-card">
+            <h5>Event Loop</h5>
+            <p>JavaScript is single-threaded. The event loop processes the call stack and task queue, enabling async behaviour via callbacks, promises, and <code>async/await</code>.</p>
+          </div>
+          <div class="concept-card">
+            <h5>Prototypal Inheritance</h5>
+            <p>Objects inherit from other objects via the prototype chain. ES6 <code>class</code> syntax is syntactic sugar over this mechanism.</p>
+          </div>
+          <div class="concept-card">
+            <h5>Destructuring</h5>
+            <p>Extract values from arrays or objects into variables in a single line: <code>const {name, age} = user</code>. Cleaner than multiple property accesses.</p>
+          </div>
+          <div class="concept-card">
+            <h5>Spread &amp; Rest</h5>
+            <p><code>...arr</code> spreads items into a new array/call; <code>...rest</code> collects remaining params. Both enable immutable patterns and variadic functions.</p>
+          </div>
+          <div class="concept-card">
+            <h5>Promises / Async</h5>
+            <p>Asynchronous operations (fetch, timers) return Promises. <code>await</code> pauses a function until the Promise resolves, keeping code readable without callback nesting.</p>
+          </div>
+          <div class="concept-card">
+            <h5>Array Methods</h5>
+            <p><code>map</code>, <code>filter</code>, <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code> — functional array transformations that avoid manual loops and mutation.</p>
+          </div>
+          <div class="concept-card">
+            <h5>Modules (ESM)</h5>
+            <p><code>export</code> / <code>import</code> split code into reusable files. Tree-shaking removes unused exports at build time, reducing bundle size.</p>
+          </div>
+        </div>
+
+        <div class="code-block" style="margin-top:1.5rem"><span class="cm">// ES6+ syntax examples</span>
+<span class="kw">const</span> greet = (<span class="attr">name</span> = <span class="str">'World'</span>) =&gt; <span class="str">`Hello, ${name}!`</span>;
+
+<span class="kw">const</span> { id, ...rest } = { id: <span class="val">1</span>, name: <span class="str">'Alice'</span>, role: <span class="str">'admin'</span> };
+
+<span class="kw">const</span> doubled = [<span class="val">1</span>, <span class="val">2</span>, <span class="val">3</span>].<span class="attr">map</span>(n =&gt; n * <span class="val">2</span>);   <span class="cm">// [2, 4, 6]</span>
+<span class="kw">const</span> evens   = [<span class="val">1</span>, <span class="val">2</span>, <span class="val">3</span>, <span class="val">4</span>].<span class="attr">filter</span>(n =&gt; n % <span class="val">2</span> === <span class="val">0</span>); <span class="cm">// [2, 4]</span>
+
+<span class="cm">// async/await</span>
+<span class="kw">async function</span> <span class="attr">fetchUser</span>(id) {
+  <span class="kw">const</span> res  = <span class="kw">await</span> <span class="attr">fetch</span>(<span class="str">`/api/users/${id}`</span>);
+  <span class="kw">const</span> data = <span class="kw">await</span> res.<span class="attr">json</span>();
+  <span class="kw">return</span> data;
+}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>ePortfolio · Full Stack Development · <span>HTML · CSS · Bootstrap · JavaScript</span></p>
+  <p style="margin-top:0.5rem;opacity:0.5;">Built with semantic HTML5, custom CSS, Bootstrap 5 &amp; Vanilla JS</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ── CALCULATOR ── */
+let calcCurrent = '', calcPrevious = '', calcOperator = '', calcJustEq = false;
+
+function calcFn(type, val) {
+  if (type === 'clear') {
+    calcCurrent = ''; calcPrevious = ''; calcOperator = ''; calcJustEq = false;
+  } else if (type === 'sign') {
+    if (calcCurrent) calcCurrent = String(parseFloat(calcCurrent) * -1);
+  } else if (type === 'percent') {
+    if (calcCurrent) calcCurrent = String(parseFloat(calcCurrent) / 100);
+  } else if (type === 'dot') {
+    if (!calcCurrent.includes('.')) calcCurrent += calcCurrent ? '.' : '0.';
+  } else if (type === 'num') {
+    if (calcJustEq) { calcCurrent = ''; calcJustEq = false; }
+    calcCurrent += val;
+  } else if (type === 'op') {
+    if (calcCurrent && calcPrevious && calcOperator) {
+      const r = calcCompute(); calcPrevious = String(r); calcCurrent = '';
+    } else if (calcCurrent) {
+      calcPrevious = calcCurrent; calcCurrent = '';
+    }
+    calcOperator = val; calcJustEq = false;
+  } else if (type === 'equals') {
+    if (calcPrevious && calcCurrent && calcOperator) {
+      const r = calcCompute();
+      document.getElementById('calc-expr').textContent =
+        calcPrevious + ' ' + fmtOp(calcOperator) + ' ' + calcCurrent + ' =';
+      calcCurrent = String(r); calcPrevious = ''; calcOperator = ''; calcJustEq = true;
+    }
+  }
+  const disp = document.getElementById('calc-val');
+  disp.textContent = calcCurrent || calcPrevious || '0';
+  if (type !== 'equals')
+    document.getElementById('calc-expr').textContent =
+      calcPrevious ? calcPrevious + ' ' + fmtOp(calcOperator) : '';
+}
+function calcCompute() {
+  const a = parseFloat(calcPrevious), b = parseFloat(calcCurrent);
+  if (calcOperator === '+') return +(a + b).toPrecision(10);
+  if (calcOperator === '-') return +(a - b).toPrecision(10);
+  if (calcOperator === '*') return +(a * b).toPrecision(10);
+  if (calcOperator === '/') return b === 0 ? 'Error' : +(a / b).toPrecision(10);
+}
+function fmtOp(op) { return {'+':'+','-':'−','*':'×','/':'÷'}[op] || op; }
+
+/* ── TO-DO LIST ── */
+let todos = [];
+function addTodo() {
+  const input = document.getElementById('todo-input');
+  const text = input.value.trim();
+  if (!text) return;
+  todos.push({ id: Date.now(), text, done: false });
+  input.value = '';
+  renderTodos();
+}
+function toggleTodo(id) {
+  todos = todos.map(t => t.id === id ? { ...t, done: !t.done } : t);
+  renderTodos();
+}
+function removeTodo(id) {
+  todos = todos.filter(t => t.id !== id);
+  renderTodos();
+}
+function renderTodos() {
+  const list = document.getElementById('todo-list');
+  list.innerHTML = todos.map(t => `
+    <li class="todo-item${t.done ? ' done' : ''}">
+      <input class="todo-check" type="checkbox" ${t.done ? 'checked' : ''}
+        onchange="toggleTodo(${t.id})">
+      <span>${escHtml(t.text)}</span>
+      <button class="todo-del" onclick="removeTodo(${t.id})" title="Delete">✕</button>
+    </li>
+  `).join('');
+  const done = todos.filter(t => t.done).length;
+  document.getElementById('todo-counter').textContent =
+    `${todos.length} task${todos.length !== 1 ? 's' : ''} · ${done} completed`;
+}
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+['Learn HTML semantics','Style with CSS Grid','Explore Bootstrap components','Build JS interactions'].forEach(t => {
+  todos.push({ id: Date.now() + Math.random(), text: t, done: false });
+});
+todos[0].done = true; todos[1].done = true;
+renderTodos();
+document.getElementById('todo-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addTodo();
+});
+
+/* ── LIVE DOM ── */
+function updateLive() {
+  const name = document.getElementById('live-name').value;
+  const size = document.getElementById('live-size').value;
+  const output = document.getElementById('live-output');
+  output.textContent = name || 'Hello!';
+  output.style.fontSize = size + 'px';
+  document.getElementById('size-label').textContent = size;
+}
+</script>
+</body>
+</html>

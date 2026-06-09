@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@300;400;500&display=swap');
+
+:root {
+  --ink: #0d0d0d;
+  --paper: #f5f0e8;
+  --accent: #c0392b;
+  --gold: #d4a843;
+  --muted: #6b6459;
+  --card-bg: #faf7f2;
+  --border: #d4cec4;
+  --code-bg: #1a1a2e;
+  --code-text: #a8e6cf;
+  --section-gap: 6rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ── STICKY NAV ── */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0.7rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  overflow-x: auto;
+}
+.sticky-nav .brand {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: var(--gold);
+  white-space: nowrap;
+  margin-right: auto;
+  text-decoration: none;
+}
+.sticky-nav a {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.6);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+  padding: 0.3rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.sticky-nav a:hover { color: var(--gold); }
+.sticky-nav a.active {
+  color: var(--gold);
+  border-bottom: 2px solid var(--accent);
+}
+
+/* ── ACTIVE TOPIC BADGE (top right) ── */
+.active-topic-badge {
+  display: none;
+}
+
+/* ── SECTION WRAPPER ── */
+.section {
+  padding: var(--section-gap) 0;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-child { border-bottom: none; }
+
+.section-number {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.section-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.section-title span { color: var(--accent); }
+.lead-text {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 680px;
+  margin-bottom: 2.5rem;
+  line-height: 1.9;
+}
+
+/* ── CARD ── */
+.demo-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+.demo-card-header {
+  background: var(--ink);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot-r { background: #ff5f57; }
+.dot-y { background: #febc2e; }
+.dot-g { background: #28c840; }
+.demo-card-label {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  margin-left: 0.5rem;
+}
+.demo-card-body { padding: 1.8rem; }
+
+/* ── CODE BLOCK ── */
+.code-block {
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: 1.4rem 1.6rem;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--code-text);
+  overflow-x: auto;
+  line-height: 1.8;
+  margin: 1.2rem 0;
+}
+.code-block .kw  { color: #ff79c6; }
+.code-block .str { color: #f1fa8c; }
+.code-block .attr{ color: #8be9fd; }
+.code-block .val { color: #bd93f9; }
+.code-block .cm  { color: #6272a4; }
+
+/* ── INFO BOX ── */
+.info-box {
+  border-left: 3px solid var(--gold);
+  background: rgba(212,168,67,0.06);
+  padding: 1rem 1.4rem;
+  border-radius: 0 4px 4px 0;
+  margin: 1.2rem 0;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+.info-box strong { color: var(--accent); }
+
+/* ── TAGS ── */
+.tag {
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  background: var(--ink);
+  color: var(--gold);
+  padding: 0.25rem 0.7rem;
+  border-radius: 2px;
+  margin: 0.2rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(245,240,232,0.5);
+  text-align: center;
+  padding: 3rem 1rem;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+footer span { color: var(--gold); }
+
+/* ── PAGE TRANSITION ── */
+body { animation: pageIn 0.4s ease; }
+@keyframes pageIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .sticky-nav { gap: 1rem; padding: 0.7rem 1rem; }
+  .active-topic-badge { display: none; }
+}

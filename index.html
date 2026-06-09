@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ePortfolio — Full Stack Development</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.04) 39px, rgba(255,255,255,0.04) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.04) 39px, rgba(255,255,255,0.04) 40px);
+    }
+    .hero-inner { position: relative; text-align: center; padding: 2rem; }
+    .hero-eyebrow {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-title {
+      font-family: 'Roboto', sans-serif;
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 900;
+      color: var(--paper);
+      line-height: 1.05;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+    .hero-title span { color: var(--accent); }
+    .hero-sub {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.1rem;
+      color: rgba(245,240,232,0.65);
+      margin-top: 1.5rem;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.65s forwards;
+    }
+    .nav-pills-hero {
+      margin-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.85s forwards;
+    }
+    .nav-pills-hero a {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--paper);
+      border: 1px solid rgba(245,240,232,0.25);
+      padding: 0.6rem 1.4rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .nav-pills-hero a:hover { background: var(--accent); border-color: var(--accent); }
+    .hero-stats {
+      margin-top: 4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.9s 1.05s forwards;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat-num {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      display: block;
+    }
+    .hero-stat-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.4);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    /* hide badge on hero page */
+    .active-topic-badge { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="index.html" class="brand">ePortfolio</a>
+  <a href="fullstack.html">Full Stack</a>
+  <a href="html.html">HTML</a>
+  <a href="css.html">CSS</a>
+  <a href="bootstrap.html">Bootstrap</a>
+  <a href="javascript.html">JavaScript</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">ePortfolio · Full Stack Development</div>
+    <h1 class="hero-title">Building the<br><span>Full Stack</span></h1>
+    <p class="hero-sub">A comprehensive portfolio demonstrating HTML, CSS, Bootstrap &amp; JavaScript — the foundations of modern web development. Each topic lives on its own dedicated page with in-depth examples.</p>
+    <nav class="nav-pills-hero">
+      <a href="fullstack.html">Full Stack</a>
+      <a href="html.html">HTML</a>
+      <a href="css.html">CSS</a>
+      <a href="bootstrap.html">Bootstrap</a>
+      <a href="javascript.html">JavaScript</a>
+    </nav>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">5</span>
+        <span class="hero-stat-label">Topics Covered</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">12+</span>
+        <span class="hero-stat-label">Live Demos</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">100%</span>
+        <span class="hero-stat-label">Vanilla JS</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">A11Y</span>
+        <span class="hero-stat-label">Accessible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Overview</div>
+    <h2 class="section-title">What's<br><span>Inside</span></h2>
+    <p class="lead-text">
+      This ePortfolio is split into five dedicated pages, each exploring a key technology in modern web development. Navigate using the menu above or the cards below.
+    </p>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <a href="fullstack.html" style="text-decoration:none;">
+          <div class="demo-card" style="margin-bottom:0; transition:transform 0.2s; cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+            <div class="demo-card-header">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span class="demo-card-label">01 / 05</span>
+            </div>
+            <div class="demo-card-body">
+              <div style="font-size:2rem; margin-bottom:0.5rem;">🧱</div>
+              <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:0.5rem;">Full Stack Development</h3>
+              <p style="font-size:0.88rem; color:var(--muted);">Understand the full technology stack: front end, back end, databases, and DevOps. Explore the MERN and LAMP stacks.</p>
+              <div style="margin-top:1rem;"><span class="tag">Client</span><span class="tag">Server</span><span class="tag">Database</span><span class="tag">DevOps</span></div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <a href="html.html" style="text-decoration:none;">
+          <div class="demo-card" style="margin-bottom:0; transition:transform 0.2s; cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+            <div class="demo-card-header">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span class="demo-card-label">02 / 05</span>
+            </div>
+            <div class="demo-card-body">
+              <div style="font-size:2rem; margin-bottom:0.5rem;">📄</div>
+              <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:0.5rem;">HTML</h3>
+              <p style="font-size:0.88rem; color:var(--muted);">Semantic markup, document structure, forms, tables, and accessibility — the skeleton of every web page.</p>
+              <div style="margin-top:1rem;"><span class="tag">Semantic</span><span class="tag">Forms</span><span class="tag">Tables</span><span class="tag">A11Y</span></div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <a href="css.html" style="text-decoration:none;">
+          <div class="demo-card" style="margin-bottom:0; transition:transform 0.2s; cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+            <div class="demo-card-header">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span class="demo-card-label">03 / 05</span>
+            </div>
+            <div class="demo-card-body">
+              <div style="font-size:2rem; margin-bottom:0.5rem;">🎨</div>
+              <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:0.5rem;">CSS</h3>
+              <p style="font-size:0.88rem; color:var(--muted);">Transitions, gradients, the box model, Flexbox, Grid, animations, and custom properties explored through live demos.</p>
+              <div style="margin-top:1rem;"><span class="tag">Flexbox</span><span class="tag">Grid</span><span class="tag">Animations</span><span class="tag">Variables</span></div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <a href="bootstrap.html" style="text-decoration:none;">
+          <div class="demo-card" style="margin-bottom:0; transition:transform 0.2s; cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+            <div class="demo-card-header">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span class="demo-card-label">04 / 05</span>
+            </div>
+            <div class="demo-card-body">
+              <div style="font-size:2rem; margin-bottom:0.5rem;">⚡</div>
+              <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:0.5rem;">Bootstrap</h3>
+              <p style="font-size:0.88rem; color:var(--muted);">The world's most popular CSS framework — responsive grid, utility classes, components, and rapid prototyping.</p>
+              <div style="margin-top:1rem;"><span class="tag">Grid</span><span class="tag">Components</span><span class="tag">Utilities</span><span class="tag">Responsive</span></div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <a href="javascript.html" style="text-decoration:none;">
+          <div class="demo-card" style="margin-bottom:0; transition:transform 0.2s; cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+            <div class="demo-card-header">
+              <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+              <span class="demo-card-label">05 / 05</span>
+            </div>
+            <div class="demo-card-body">
+              <div style="font-size:2rem; margin-bottom:0.5rem;">⚙️</div>
+              <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:0.5rem;">JavaScript</h3>
+              <p style="font-size:0.88rem; color:var(--muted);">Interactivity, DOM manipulation, state management, and event-driven programming via a calculator, to-do list, and live preview.</p>
+              <div style="margin-top:1rem;"><span class="tag">DOM</span><span class="tag">Events</span><span class="tag">State</span><span class="tag">ES6+</span></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>ePortfolio · Full Stack Development · <span>HTML · CSS · Bootstrap · JavaScript</span></p>
+  <p style="margin-top:0.5rem;opacity:0.5;">Built with semantic HTML5, custom CSS, Bootstrap 5 &amp; Vanilla JS</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

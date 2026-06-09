@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Stack Development — ePortfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .stack-diagram {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 1.5rem;
+    }
+    .stack-layer {
+      padding: 1.8rem 2rem;
+      background: var(--card-bg);
+      transition: background 0.2s;
+      min-height: 220px;
+    }
+    .stack-layer:hover { background: #fff; }
+    .stack-layer-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+    .stack-layer-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .stack-layer h4 { font-family: 'Roboto', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .stack-layer p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.8rem; }
+
+    .roadmap-step {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .roadmap-step:last-child { border-bottom: none; }
+    .roadmap-num {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--border);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 3rem;
+    }
+    .roadmap-content h4 { font-family: 'Roboto', sans-serif; font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .roadmap-content p { font-size: 0.88rem; color: var(--muted); }
+
+    @media (max-width: 640px) { .stack-diagram { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- ACTIVE TOPIC BADGE -->
+<div class="active-topic-badge">01 · Full Stack</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="index.html" class="brand">ePortfolio</a>
+  <a href="fullstack.html" class="active">Full Stack</a>
+  <a href="html.html">HTML</a>
+  <a href="css.html">CSS</a>
+  <a href="bootstrap.html">Bootstrap</a>
+  <a href="javascript.html">JavaScript</a>
+</nav>
+
+<!-- SECTION -->
+<section class="section" id="fullstack">
+  <div class="container">
+    <h2 class="section-title">What is<br><span>Full Stack</span> Development?</h2>
+    <p class="lead-text">
+      Full stack development refers to the practice of working across the entire technology stack of a web application — both the <strong>front end</strong> (what users see and interact with) and the <strong>back end</strong> (servers, databases, and application logic). A full stack developer is proficient in both layers, enabling them to design, build, and deploy complete web applications independently.
+    </p>
+
+    <!-- The Four Layers -->
+    <div class="stack-diagram">
+      <div class="stack-layer">
+        <div class="stack-layer-icon">🖥️</div>
+        <div class="stack-layer-label">Front End</div>
+        <h4>Client Side</h4>
+        <p>Everything the user sees: HTML structures the content, CSS styles it, and JavaScript adds interactivity. Frameworks like React or Vue accelerate development. The browser renders this layer directly — no server required at runtime.</p>
+        <div><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">React</span></div>
+      </div>
+      <div class="stack-layer">
+        <div class="stack-layer-icon">⚙️</div>
+        <div class="stack-layer-label">Back End</div>
+        <h4>Server Side</h4>
+        <p>Business logic, authentication, and API design live here. The server receives HTTP requests, processes them, queries the database if needed, and returns structured responses (usually JSON). Common runtimes include Node.js, Python, and Java.</p>
+        <div><span class="tag">Node.js</span><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">REST</span></div>
+      </div>
+      <div class="stack-layer">
+        <div class="stack-layer-icon">🗄️</div>
+        <div class="stack-layer-label">Database</div>
+        <h4>Data Layer</h4>
+        <p>Persistent storage for application data. Relational databases (MySQL, PostgreSQL) use tables and foreign keys; NoSQL databases (MongoDB) store flexible JSON documents. The choice depends on the data's shape and query patterns.</p>
+        <div><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">PostgreSQL</span></div>
+      </div>
+      <div class="stack-layer">
+        <div class="stack-layer-icon">☁️</div>
+        <div class="stack-layer-label">DevOps</div>
+        <h4>Deployment</h4>
+        <p>Hosting, version control, and CI/CD pipelines ensure the application is available, scalable, and maintainable. Containerisation with Docker isolates environments. Cloud platforms (AWS, GCP, Azure) provide on-demand infrastructure.</p>
+        <div><span class="tag">Git</span><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">CI/CD</span></div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:2rem">
+      <strong>Why Full Stack?</strong> A full stack developer can trace a bug from a button click on screen all the way to a database query — and fix it at any layer. This end-to-end understanding makes them invaluable for start-ups, agile teams, and solo projects alike. The most popular full stack combinations today are <em>MERN</em> (MongoDB, Express, React, Node) and <em>LAMP</em> (Linux, Apache, MySQL, PHP).
+    </div>
+
+    <p style="margin-top:1.5rem; font-size:0.92rem; color:var(--muted)">
+      This ePortfolio itself demonstrates full stack awareness: the HTML provides semantic document structure, CSS and Bootstrap handle layout and design, JavaScript delivers client-side interactivity, and together they form a complete, deployable web page — the front-end layer of any full stack application.
+    </p>
+  </div>
+</section>
+
+<!-- POPULAR STACKS SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Deep Dive</div>
+    <h2 class="section-title">Popular <span>Stacks</span></h2>
+    <p class="lead-text">
+      A "stack" is simply a named collection of technologies that work together across layers. Different stacks suit different use-cases — here are the most widely adopted ones.
+    </p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">popular full-stack combinations</span>
+      </div>
+      <div class="demo-card-body">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:0.5rem;">MERN Stack</h4>
+            <p style="font-size:0.88rem; color:var(--muted); margin-bottom:0.8rem;">The modern JavaScript-everywhere approach. All four layers use JS or JSON, so developers need only one language across the entire application.</p>
+            <div class="code-block"><span class="cm">// MERN = MongoDB + Express + React + Node.js</span>
+<span class="attr">MongoDB</span>  → <span class="str">document database (JSON-like)</span>
+<span class="attr">Express</span>  → <span class="str">minimal Node.js web framework</span>
+<span class="attr">React</span>    → <span class="str">declarative front-end UI library</span>
+<span class="attr">Node.js</span>  → <span class="str">JavaScript runtime for the server</span></div>
+            <div><span class="tag">JavaScript</span><span class="tag">JSON</span><span class="tag">NoSQL</span></div>
+          </div>
+          <div class="col-md-6">
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:0.5rem;">LAMP Stack</h4>
+            <p style="font-size:0.88rem; color:var(--muted); margin-bottom:0.8rem;">The classic open-source combination powering millions of websites including early WordPress and Wikipedia. Battle-tested and well-documented.</p>
+            <div class="code-block"><span class="cm">// LAMP = Linux + Apache + MySQL + PHP</span>
+<span class="attr">Linux</span>   → <span class="str">operating system (Ubuntu, CentOS)</span>
+<span class="attr">Apache</span>  → <span class="str">HTTP web server</span>
+<span class="attr">MySQL</span>   → <span class="str">relational database</span>
+<span class="attr">PHP</span>     → <span class="str">server-side scripting language</span></div>
+            <div><span class="tag">Open Source</span><span class="tag">Relational</span><span class="tag">Mature</span></div>
+          </div>
+        </div>
+        <div class="row g-4" style="margin-top:0.5rem;">
+          <div class="col-md-6">
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:0.5rem;">Django + React</h4>
+            <p style="font-size:0.88rem; color:var(--muted); margin-bottom:0.8rem;">Python's batteries-included framework paired with the most popular front-end library. Common in data science and fintech contexts.</p>
+            <div><span class="tag">Python</span><span class="tag">REST API</span><span class="tag">React</span></div>
+          </div>
+          <div class="col-md-6">
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:0.5rem;">JAMstack</h4>
+            <p style="font-size:0.88rem; color:var(--muted); margin-bottom:0.8rem;">JavaScript, APIs, and Markup — pre-rendered static sites that call third-party APIs at runtime. Extremely fast and secure, popular with Next.js and Netlify.</p>
+            <div><span class="tag">Static</span><span class="tag">CDN</span><span class="tag">Next.js</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING ROADMAP -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Roadmap</div>
+    <h2 class="section-title">Learning <span>Roadmap</span></h2>
+    <p class="lead-text">
+      Becoming a full stack developer is a journey of layered skill-building. Each layer depends on the one beneath it — master the foundations before adding complexity.
+    </p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">recommended learning path</span>
+      </div>
+      <div class="demo-card-body">
+        <div class="roadmap-step">
+          <div class="roadmap-num">1</div>
+          <div class="roadmap-content">
+            <h4>HTML &amp; CSS Fundamentals</h4>
+            <p>Learn semantic markup, the box model, Flexbox, Grid, and responsive design. Everything else builds on this foundation. Time estimate: 4–6 weeks.</p>
+            <div style="margin-top:0.5rem"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Responsive</span></div>
+          </div>
+        </div>
+        <div class="roadmap-step">
+          <div class="roadmap-num">2</div>
+          <div class="roadmap-content">
+            <h4>JavaScript (Vanilla)</h4>
+            <p>Variables, functions, arrays, objects, DOM manipulation, event listeners, fetch API, and ES6+ syntax. Build interactive projects — a calculator, a quiz app, a weather widget. Time estimate: 6–10 weeks.</p>
+            <div style="margin-top:0.5rem"><span class="tag">ES6+</span><span class="tag">DOM</span><span class="tag">Async/Await</span></div>
+          </div>
+        </div>
+        <div class="roadmap-step">
+          <div class="roadmap-num">3</div>
+          <div class="roadmap-content">
+            <h4>A Front-End Framework</h4>
+            <p>React is the industry standard. Learn components, props, state (useState), effects (useEffect), routing (React Router), and state management (Context or Redux Toolkit). Time estimate: 8–12 weeks.</p>
+            <div style="margin-top:0.5rem"><span class="tag">React</span><span class="tag">Components</span><span class="tag">Hooks</span></div>
+          </div>
+        </div>
+        <div class="roadmap-step">
+          <div class="roadmap-num">4</div>
+          <div class="roadmap-content">
+            <h4>Back-End &amp; APIs</h4>
+            <p>Node.js with Express or Python with Django/FastAPI. Learn HTTP, REST API design, middleware, authentication (JWT, sessions), and error handling. Time estimate: 6–8 weeks.</p>
+            <div style="margin-top:0.5rem"><span class="tag">Node.js</span><span class="tag">REST</span><span class="tag">Auth</span></div>
+          </div>
+        </div>
+        <div class="roadmap-step">
+          <div class="roadmap-num">5</div>
+          <div class="roadmap-content">
+            <h4>Databases &amp; Deployment</h4>
+            <p>Learn SQL basics and one relational DB (PostgreSQL) plus one NoSQL DB (MongoDB). Then deploy with Vercel/Netlify (front end) and Railway/Render (back end). Add version control with Git and GitHub from day one. Time estimate: ongoing.</p>
+            <div style="margin-top:0.5rem"><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Git</span><span class="tag">Deploy</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>ePortfolio · Full Stack Development · <span>HTML · CSS · Bootstrap · JavaScript</span></p>
+  <p style="margin-top:0.5rem;opacity:0.5;">Built with semantic HTML5, custom CSS, Bootstrap 5 &amp; Vanilla JS</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

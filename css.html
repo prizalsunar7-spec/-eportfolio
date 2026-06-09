@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS — ePortfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* Hover cards */
+    .css-cards-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+    .css-card {
+      flex: 1; min-width: 140px; padding: 1.6rem;
+      border-radius: 8px; text-align: center; font-weight: 700; font-size: 0.85rem;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
+      min-height: 110px; display: flex; align-items: center; justify-content: center;
+    }
+    .css-card:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 16px 40px rgba(0,0,0,0.15); }
+    .cc1 { background: linear-gradient(135deg,#c0392b,#e74c3c); color: #fff; }
+    .cc2 { background: linear-gradient(135deg,#1a1a2e,#16213e); color: #a8e6cf; }
+    .cc3 { background: linear-gradient(135deg,#d4a843,#f39c12); color: #fff; }
+    .cc4 { background: linear-gradient(135deg,#2ecc71,#27ae60); color: #fff; }
+
+    /* Box model */
+    .css-box-model { display: flex; align-items: center; justify-content: center; margin-top: 1.5rem; }
+    .bm-margin  { background: rgba(255,152,0,0.15);  border: 2px dashed #ff9800; padding: 24px; text-align: center; border-radius: 4px; font-size: 0.7rem; font-family: 'Roboto Mono', monospace; color: #e65100; }
+    .bm-border  { background: rgba(76,175,80,0.12);  border: 6px solid #4caf50;  padding: 20px; font-size: 0.7rem; font-family: 'Roboto Mono', monospace; color: #2e7d32; }
+    .bm-padding { background: rgba(33,150,243,0.12); border: 2px dashed #2196f3; padding: 18px; font-size: 0.7rem; font-family: 'Roboto Mono', monospace; color: #1565c0; }
+    .bm-content { background: #fff3e0; padding: 20px 28px; font-size: 0.8rem; font-family: 'Roboto Mono', monospace; color: var(--ink); font-weight: 700; }
+
+    /* CSS variable demo */
+    .var-demo-box {
+      padding: 1.2rem 1.6rem;
+      border-radius: 6px;
+      margin-bottom: 0.8rem;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    /* Specificity pyramid */
+    .spec-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.7rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .spec-num {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--accent);
+      min-width: 3rem;
+    }
+
+    /* Keyframe animation demo */
+    @keyframes pulse-demo {
+      0%, 100% { transform: scale(1); background: #c0392b; }
+      50% { transform: scale(1.15); background: #d4a843; }
+    }
+    @keyframes spin-demo {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes slide-demo {
+      0%   { transform: translateX(-40px); opacity: 0; }
+      100% { transform: translateX(0);     opacity: 1; }
+    }
+    .anim-box {
+      width: 70px; height: 70px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Roboto Mono', monospace; font-size: 0.65rem; color: #fff; font-weight: 700;
+    }
+    .anim-pulse  { background: var(--accent); animation: pulse-demo  1.5s ease-in-out infinite; }
+    .anim-spin   { background: var(--gold); color: var(--ink); animation: spin-demo   2s linear infinite; border-radius: 50%; }
+    .anim-slide  { background: #1a1a2e; color: var(--code-text); animation: slide-demo 0.6s ease forwards; }
+  </style>
+</head>
+<body>
+
+<!-- ACTIVE TOPIC BADGE -->
+<div class="active-topic-badge">03 · CSS</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="index.html" class="brand">ePortfolio</a>
+  <a href="fullstack.html">Full Stack</a>
+  <a href="html.html">HTML</a>
+  <a href="css.html" class="active">CSS</a>
+  <a href="bootstrap.html">Bootstrap</a>
+  <a href="javascript.html">JavaScript</a>
+</nav>
+
+<!-- MAIN SECTION -->
+<section class="section" id="css">
+  <div class="container">
+    <h2 class="section-title"><span>CSS</span> —<br>Styling &amp; Layout</h2>
+    <p class="lead-text">
+      Cascading Style Sheets (CSS) control the visual presentation of HTML. Modern CSS includes powerful layout tools (Flexbox, Grid), custom properties (variables), transitions, animations, and the cascade — the rules that determine which styles apply when multiple rules target the same element. CSS3, the current iteration, brought modular specifications that browsers implement incrementally.
+    </p>
+
+    <!-- Demo 1: Hover cards / transitions -->
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · transitions &amp; gradients</span>
+      </div>
+      <div class="demo-card-body">
+        <h3 style="font-family:'Playfair Display',serif; margin-bottom:0.5rem;">Demonstration: CSS Transitions &amp; Gradients</h3>
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:0.5rem;">Hover over the cards below to see CSS <code>transition</code> and <code>transform</code> in action. The spring-like feel comes from a custom cubic-bezier curve.</p>
+        <div class="css-cards-row">
+          <div class="css-card cc1">Transition<br>transform + shadow</div>
+          <div class="css-card cc2">Gradient<br>dark theme</div>
+          <div class="css-card cc3">Gradient<br>warm gold</div>
+          <div class="css-card cc4">Cubic Bezier<br>spring effect</div>
+        </div>
+        <div class="code-block" style="margin-top:1.2rem"><span class="cm">/* CSS producing the spring hover effect */</span>
+<span class="attr">.css-card</span> {
+  <span class="attr">transition</span>: <span class="val">transform 0.25s cubic-bezier(.34,1.56,.64,1),
+              box-shadow 0.25s ease</span>;
+}
+<span class="attr">.css-card:hover</span> {
+  <span class="attr">transform</span>: <span class="val">translateY(-6px) scale(1.03)</span>;
+  <span class="attr">box-shadow</span>: <span class="val">0 16px 40px rgba(0,0,0,0.15)</span>;
+}</div>
+        <div class="info-box">
+          <strong>cubic-bezier(.34,1.56,.64,1)</strong> creates a spring-like overshoot — the card bounces slightly past its destination before settling. This micro-interaction communicates interactivity far better than a simple <code>linear</code> or <code>ease</code> transition, and adds life to a static layout.
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo 2: Box model -->
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · the CSS box model</span>
+      </div>
+      <div class="demo-card-body">
+        <h3 style="font-family:'Playfair Display',serif; margin-bottom:0.5rem;">Demonstration: The Box Model</h3>
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;">Every HTML element is a rectangular box composed of four layers. Understanding the box model is essential for precise layout control. Setting <code>box-sizing: border-box</code> (a near-universal modern practice) makes width include padding and border, eliminating a common source of layout bugs.</p>
+        <div class="css-box-model">
+          <div class="bm-margin">
+            margin (orange)
+            <div class="bm-border">
+              border (green)
+              <div class="bm-padding">
+                padding (blue)
+                <div class="bm-content">content area</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="code-block" style="margin-top:1.2rem"><span class="attr">.box</span> {
+  <span class="attr">margin</span>:      <span class="val">20px</span>;              <span class="cm">/* space OUTSIDE the border */</span>
+  <span class="attr">border</span>:      <span class="val">6px solid #4caf50</span>;
+  <span class="attr">padding</span>:     <span class="val">16px</span>;              <span class="cm">/* space INSIDE the border  */</span>
+  <span class="attr">width</span>:       <span class="val">200px</span>;             <span class="cm">/* width of the content area */</span>
+  <span class="attr">box-sizing</span>:  <span class="val">border-box</span>;        <span class="cm">/* include padding+border in width */</span>
+}</div>
+      </div>
+    </div>
+
+    <!-- Demo 3: Flexbox -->
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · flexbox layout</span>
+      </div>
+      <div class="demo-card-body">
+        <h3 style="font-family:'Playfair Display',serif; margin-bottom:0.5rem;">Demonstration: Flexbox &amp; CSS Grid</h3>
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;">Flexbox makes one-dimensional (row or column) layouts trivial. The navigation bar at the top of this page uses Flexbox. Below is a live example demonstrating <code>justify-content</code> and <code>align-items</code>:</p>
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap; background:#fff; border:1px solid var(--border); border-radius:4px; padding:1.2rem; justify-content:space-between; align-items:center;">
+          <div style="background:var(--ink);color:#fff;padding:0.5rem 1rem;border-radius:4px;font-size:0.8rem;font-family:'DM Mono',monospace;">flex-start</div>
+          <div style="background:var(--accent);color:#fff;padding:1rem 1.4rem;border-radius:4px;font-size:0.8rem;font-family:'DM Mono',monospace;">center (taller)</div>
+          <div style="background:var(--gold);color:var(--ink);padding:0.5rem 1rem;border-radius:4px;font-size:0.8rem;font-family:'DM Mono',monospace;">flex-end</div>
+        </div>
+        <div class="code-block" style="margin-top:1rem"><span class="attr">.container</span> {
+  <span class="attr">display</span>:          <span class="val">flex</span>;
+  <span class="attr">justify-content</span>:  <span class="val">space-between</span>;  <span class="cm">/* horizontal (main) axis */</span>
+  <span class="attr">align-items</span>:      <span class="val">center</span>;         <span class="cm">/* vertical (cross) axis   */</span>
+  <span class="attr">gap</span>:              <span class="val">0.5rem</span>;
+  <span class="attr">flex-wrap</span>:        <span class="val">wrap</span>;           <span class="cm">/* wrap on small screens   */</span>
+}</div>
+        <div class="info-box">
+          <strong>Flexbox vs Grid:</strong> Use Flexbox for 1D layouts — nav bars, button groups, centering content. Use CSS Grid for 2D layouts — page-level structure, card grids, dashboard panels. They complement each other and are often nested.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CSS ANIMATIONS -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Deep Dive</div>
+    <h2 class="section-title">CSS <span>Animations</span></h2>
+    <p class="lead-text">
+      CSS animations use <code>@keyframes</code> to define intermediate states, and the <code>animation</code> property to apply them. Unlike transitions (which require a trigger like hover), animations run automatically and can loop.
+    </p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · @keyframes animations</span>
+      </div>
+      <div class="demo-card-body">
+        <div style="display:flex; gap:2rem; flex-wrap:wrap; align-items:center; margin-bottom:1.5rem;">
+          <div style="text-align:center;">
+            <div class="anim-box anim-pulse">pulse</div>
+            <p style="font-size:0.72rem; font-family:'DM Mono',monospace; color:var(--muted); margin-top:0.5rem;">scale + color</p>
+          </div>
+          <div style="text-align:center;">
+            <div class="anim-box anim-spin">spin</div>
+            <p style="font-size:0.72rem; font-family:'DM Mono',monospace; color:var(--muted); margin-top:0.5rem;">rotate 360°</p>
+          </div>
+          <div style="text-align:center;">
+            <div class="anim-box anim-slide">slide</div>
+            <p style="font-size:0.72rem; font-family:'DM Mono',monospace; color:var(--muted); margin-top:0.5rem;">translateX</p>
+          </div>
+        </div>
+        <div class="code-block"><span class="cm">/* Pulse animation */</span>
+<span class="kw">@keyframes</span> <span class="attr">pulse</span> {
+  <span class="val">0%, 100%</span> { <span class="attr">transform</span>: <span class="val">scale(1)</span>; }
+  <span class="val">50%</span>       { <span class="attr">transform</span>: <span class="val">scale(1.15)</span>; }
+}
+
+<span class="attr">.element</span> {
+  <span class="attr">animation</span>: <span class="val">pulse 1.5s ease-in-out infinite</span>;
+  <span class="cm">/*        name  duration  easing    iteration-count */</span>
+}</div>
+        <div class="info-box">
+          <strong>Performance tip:</strong> Only animate <code>transform</code> and <code>opacity</code> for GPU-accelerated, jank-free animations. Animating <code>width</code>, <code>height</code>, <code>top</code>, or <code>margin</code> triggers layout recalculation on every frame — expensive on complex pages. Use <code>will-change: transform</code> to hint the browser to promote the element to its own compositor layer.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CSS VARIABLES & SPECIFICITY -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Deep Dive</div>
+    <h2 class="section-title">Custom <span>Properties</span> &amp; Specificity</h2>
+    <p class="lead-text">
+      CSS custom properties (variables) allow you to store values in reusable tokens. The cascade and specificity rules determine which declarations win when multiple rules conflict.
+    </p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · css variables &amp; the cascade</span>
+      </div>
+      <div class="demo-card-body">
+        <h3 style="font-family:'Playfair Display',serif; margin-bottom:0.8rem;">CSS Custom Properties (Variables)</h3>
+
+        <div class="var-demo-box" style="background: var(--ink); color: var(--gold);">var(--ink) background · var(--gold) text</div>
+        <div class="var-demo-box" style="background: rgba(192,57,43,0.1); border: 1px solid var(--accent); color: var(--accent);">border: var(--accent) · transparent bg</div>
+
+        <div class="code-block" style="margin-top:1rem"><span class="cm">/* Define in :root — accessible everywhere */</span>
+<span class="attr">:root</span> {
+  <span class="attr">--ink</span>:    <span class="val">#0d0d0d</span>;
+  <span class="attr">--paper</span>:  <span class="val">#f5f0e8</span>;
+  <span class="attr">--accent</span>: <span class="val">#c0392b</span>;
+  <span class="attr">--gold</span>:   <span class="val">#d4a843</span>;
+}
+
+<span class="cm">/* Use with var() — theming in one place */</span>
+<span class="attr">body</span>    { <span class="attr">background</span>: <span class="val">var(--paper)</span>; <span class="attr">color</span>: <span class="val">var(--ink)</span>; }
+<span class="attr">a:hover</span> { <span class="attr">color</span>: <span class="val">var(--gold)</span>; }</div>
+
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; margin-top:1.5rem; margin-bottom:0.8rem;">Specificity — Who Wins?</h3>
+        <div class="spec-row" style="background:rgba(192,57,43,0.06);">
+          <div class="spec-num">1-0-0</div>
+          <div><code style="font-family:'DM Mono',monospace; font-size:0.8rem;">#id</code> — ID selector — highest specificity</div>
+        </div>
+        <div class="spec-row" style="background:rgba(212,168,67,0.06);">
+          <div class="spec-num">0-1-0</div>
+          <div><code style="font-family:'DM Mono',monospace; font-size:0.8rem;">.class</code>, <code style="font-family:'DM Mono',monospace; font-size:0.8rem;">[attr]</code>, <code style="font-family:'DM Mono',monospace; font-size:0.8rem;">:pseudo-class</code></div>
+        </div>
+        <div class="spec-row" style="background:rgba(107,100,89,0.06);">
+          <div class="spec-num">0-0-1</div>
+          <div><code style="font-family:'DM Mono',monospace; font-size:0.8rem;">element</code> selector — lowest specificity</div>
+        </div>
+        <div class="info-box" style="margin-top:1rem">
+          <strong>The cascade order</strong> (highest to lowest): <em>!important</em> → inline styles → specificity score → source order. Prefer class selectors over IDs for styles; keep specificity low and predictable to avoid specificity wars.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>ePortfolio · Full Stack Development · <span>HTML · CSS · Bootstrap · JavaScript</span></p>
+  <p style="margin-top:0.5rem;opacity:0.5;">Built with semantic HTML5, custom CSS, Bootstrap 5 &amp; Vanilla JS</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML — ePortfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .html-demo-preview {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.8rem;
+      background: #fff;
+      margin-top: 1rem;
+    }
+    .html-demo-preview h2 { font-family: 'Roboto', sans-serif; font-size: 1.4rem; margin-bottom: 0.4rem; }
+    .html-demo-preview p  { font-size: 0.9rem; color: #444; margin-bottom: 0.6rem; }
+    .html-demo-preview ul { padding-left: 1.3rem; font-size: 0.9rem; color: #444; }
+    .html-demo-preview table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.8rem; }
+    .html-demo-preview th, .html-demo-preview td { border: 1px solid #ddd; padding: 0.5rem 0.8rem; text-align: left; }
+    .html-demo-preview th { background: var(--ink); color: #fff; }
+    .html-demo-preview tr:nth-child(even) td { background: #f9f9f9; }
+
+    .element-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .element-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.2rem;
+    }
+    .element-card code {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      background: rgba(192,57,43,0.08);
+      padding: 0.15rem 0.4rem;
+      border-radius: 2px;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .element-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+<!-- ACTIVE TOPIC BADGE -->
+<div class="active-topic-badge">02 · HTML</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="index.html" class="brand">ePortfolio</a>
+  <a href="fullstack.html">Full Stack</a>
+  <a href="html.html" class="active">HTML</a>
+  <a href="css.html">CSS</a>
+  <a href="bootstrap.html">Bootstrap</a>
+  <a href="javascript.html">JavaScript</a>
+</nav>
+
+<!-- MAIN SECTION -->
+<section class="section" id="html">
+  <div class="container">
+    <h2 class="section-title"><span>HTML</span> —<br>Structure &amp; Semantics</h2>
+    <p class="lead-text">
+      HyperText Markup Language (HTML) is the skeleton of every webpage. It uses <em>elements</em> — written as tags — to describe the meaning and structure of content. Semantic HTML (using <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code> etc.) improves accessibility, SEO, and code readability. Introduced in 1993, HTML5 — the current standard — added native support for media, forms, and semantic landmarks.
+    </p>
+
+    <!-- Demo 1: Semantic Structure -->
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · semantic-html.html</span>
+      </div>
+      <div class="demo-card-body">
+        <h3 style="font-family:'Playfair Display',serif; margin-bottom:0.8rem;">Demonstration: Semantic Document Structure</h3>
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;">The code below shows a semantically correct HTML page skeleton. Each tag communicates meaning — not just appearance — to browsers and screen readers. A non-semantic version would use <code>&lt;div&gt;</code> everywhere, which conveys nothing to assistive technology.</p>
+
+        <div class="code-block"><span class="cm">&lt;!-- Semantic page structure --&gt;</span>
+<span class="kw">&lt;header&gt;</span>
+  <span class="kw">&lt;nav&gt;</span>
+    <span class="kw">&lt;a</span> <span class="attr">href</span>=<span class="str">"#home"</span><span class="kw">&gt;</span>Home<span class="kw">&lt;/a&gt;</span>
+    <span class="kw">&lt;a</span> <span class="attr">href</span>=<span class="str">"#about"</span><span class="kw">&gt;</span>About<span class="kw">&lt;/a&gt;</span>
+  <span class="kw">&lt;/nav&gt;</span>
+<span class="kw">&lt;/header&gt;</span>
+
+<span class="kw">&lt;main&gt;</span>
+  <span class="kw">&lt;article&gt;</span>
+    <span class="kw">&lt;h1&gt;</span>Article Title<span class="kw">&lt;/h1&gt;</span>
+    <span class="kw">&lt;p&gt;</span>Article body content goes here.<span class="kw">&lt;/p&gt;</span>
+    <span class="kw">&lt;figure&gt;</span>
+      <span class="kw">&lt;img</span> <span class="attr">src</span>=<span class="str">"photo.jpg"</span> <span class="attr">alt</span>=<span class="str">"Descriptive alt text"</span><span class="kw">&gt;</span>
+      <span class="kw">&lt;figcaption&gt;</span>Caption for the image<span class="kw">&lt;/figcaption&gt;</span>
+    <span class="kw">&lt;/figure&gt;</span>
+  <span class="kw">&lt;/article&gt;</span>
+  <span class="kw">&lt;aside&gt;</span>Related links or sidebar content<span class="kw">&lt;/aside&gt;</span>
+<span class="kw">&lt;/main&gt;</span>
+
+<span class="kw">&lt;footer&gt;</span>
+  <span class="kw">&lt;address&gt;</span>Contact: <span class="kw">&lt;a</span> <span class="attr">href</span>=<span class="str">"mailto:me@example.com"</span><span class="kw">&gt;</span>me@example.com<span class="kw">&lt;/a&gt;&lt;/address&gt;</span>
+<span class="kw">&lt;/footer&gt;</span></div>
+
+        <div class="info-box">
+          <strong>Why this matters:</strong> Screen readers use semantic tags to navigate. Search engines rank pages partly on semantic correctness. <code>&lt;article&gt;</code> tells a crawler this is self-contained content; <code>&lt;aside&gt;</code> signals supplementary material. Using <code>&lt;button&gt;</code> instead of <code>&lt;div onclick&gt;</code> gives keyboard and screen-reader users full interaction support for free.
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo 2: Form + Table -->
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · html-elements.html — live preview</span>
+      </div>
+      <div class="demo-card-body">
+        <h3 style="font-family:'Playfair Display',serif; margin-bottom:0.8rem;">Live Preview: Forms, Lists &amp; Tables</h3>
+        <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;">The form below uses HTML5 native validation — no JavaScript required for the constraints. The table uses proper <code>&lt;thead&gt;</code> and <code>&lt;tbody&gt;</code> for semantic grouping and better screen-reader announcements.</p>
+
+        <div class="html-demo-preview">
+          <h2>Student Registration</h2>
+          <p>Fill in the form below to register. All fields marked * are required.</p>
+
+          <form onsubmit="event.preventDefault(); document.getElementById('form-msg').textContent='✔ Submitted! (demo only)';">
+            <label for="name" style="font-size:0.82rem;font-weight:700;display:block;margin-top:0.8rem;">Full Name *</label>
+            <input type="text" id="name" placeholder="Jane Smith" required
+              style="width:100%;border:1px solid #ccc;padding:0.4rem 0.6rem;border-radius:3px;font-size:0.88rem;margin-top:0.3rem;">
+
+            <label for="email" style="font-size:0.82rem;font-weight:700;display:block;margin-top:0.8rem;">Email *</label>
+            <input type="email" id="email" placeholder="jane@example.com" required
+              style="width:100%;border:1px solid #ccc;padding:0.4rem 0.6rem;border-radius:3px;font-size:0.88rem;margin-top:0.3rem;">
+
+            <label for="course" style="font-size:0.82rem;font-weight:700;display:block;margin-top:0.8rem;">Course *</label>
+            <select id="course" style="width:100%;border:1px solid #ccc;padding:0.4rem 0.6rem;border-radius:3px;font-size:0.88rem;margin-top:0.3rem;">
+              <option value="">-- Select --</option>
+              <option>Full Stack Development</option>
+              <option>UX Design</option>
+              <option>Data Science</option>
+            </select>
+
+            <button type="submit"
+              style="margin-top:1rem;background:#c0392b;color:#fff;border:none;padding:0.5rem 1.2rem;border-radius:3px;font-size:0.85rem;cursor:pointer;">
+              Register
+            </button>
+            <p id="form-msg" style="color:green;font-size:0.85rem;margin-top:0.5rem;"></p>
+          </form>
+
+          <p style="margin-top:1.2rem;font-size:0.85rem;font-weight:700;">Registered Students (sample data):</p>
+          <table>
+            <thead><tr><th>Name</th><th>Course</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Alice Brown</td><td>Full Stack Development</td><td>Active</td></tr>
+              <tr><td>Bob Chen</td><td>UX Design</td><td>Active</td></tr>
+              <tr><td>Carol Diaz</td><td>Data Science</td><td>Pending</td></tr>
+            </tbody>
+          </table>
+
+          <p style="margin-top:1rem;font-size:0.85rem;font-weight:700;">Course modules:</p>
+          <ul style="font-size:0.88rem;color:#444;">
+            <li>Introduction to HTML &amp; CSS</li>
+            <li>JavaScript Fundamentals</li>
+            <li>Back-End with Node.js</li>
+            <li>Databases &amp; SQL</li>
+            <li>Deployment &amp; DevOps</li>
+          </ul>
+        </div>
+
+        <p style="margin-top:1rem; font-size:0.85rem; color:var(--muted);">
+          <strong>How it works:</strong> The form uses HTML5 native validation (<code>required</code>, <code>type="email"</code>). The table uses <code>&lt;thead&gt;</code> / <code>&lt;tbody&gt;</code> for accessible grouping. Submitting the form triggers a JavaScript <code>preventDefault()</code> showing a confirmation message without a page reload.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY ELEMENTS REFERENCE -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Reference</div>
+    <h2 class="section-title">Essential <span>Elements</span></h2>
+    <p class="lead-text">
+      HTML5 defines over 100 elements. These are the ones you'll use on almost every project — organised by their semantic role.
+    </p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">html5 element reference</span>
+      </div>
+      <div class="demo-card-body">
+        <div class="element-grid">
+          <div class="element-card"><code>&lt;header&gt;</code><p>Introductory content or a group of navigational aids. Usually contains a logo and the primary nav.</p></div>
+          <div class="element-card"><code>&lt;nav&gt;</code><p>A section of a page whose purpose is to provide navigation links, either within the document or to other pages.</p></div>
+          <div class="element-card"><code>&lt;main&gt;</code><p>The dominant content of the document. Only one <code>&lt;main&gt;</code> per page; it excludes sidebars and navs.</p></div>
+          <div class="element-card"><code>&lt;article&gt;</code><p>Self-contained content that could be independently distributed — a blog post, comment, or news story.</p></div>
+          <div class="element-card"><code>&lt;section&gt;</code><p>A thematic grouping of content with its own heading. Use when content warrants its own navigation entry.</p></div>
+          <div class="element-card"><code>&lt;aside&gt;</code><p>Content tangentially related to the main content — pull quotes, sidebars, related links, or ads.</p></div>
+          <div class="element-card"><code>&lt;figure&gt;</code><p>Self-contained content like images, diagrams, or code listings, optionally with a <code>&lt;figcaption&gt;</code>.</p></div>
+          <div class="element-card"><code>&lt;footer&gt;</code><p>Footer of its nearest sectioning element. Contains authorship info, copyright, or related document links.</p></div>
+          <div class="element-card"><code>&lt;button&gt;</code><p>A clickable control. Preferred over <code>&lt;div onclick&gt;</code> for keyboard and screen-reader accessibility.</p></div>
+          <div class="element-card"><code>&lt;details&gt; / &lt;summary&gt;</code><p>Disclosure widget — a native accordion/spoiler with no JavaScript needed.</p></div>
+          <div class="element-card"><code>&lt;time&gt;</code><p>Represents a specific period in time. The <code>datetime</code> attribute provides machine-readable format.</p></div>
+          <div class="element-card"><code>&lt;picture&gt;</code><p>Responsive images — serve different image files based on screen size or display density via <code>&lt;source&gt;</code>.</p></div>
+        </div>
+
+        <div class="info-box" style="margin-top:1.5rem">
+          <strong>Accessibility rule of thumb:</strong> If an element is interactive, use a native interactive element (<code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;input&gt;</code>). Native elements are focusable, announce their role to screen readers, and respond to keyboard events — all for free. Recreating this with <code>&lt;div&gt;</code> requires setting <code>role</code>, <code>tabindex</code>, and custom keyboard handlers.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HTML5 FORMS DEEP DIVE -->
+<section class="section">
+  <div class="container">
+    <div class="section-number">Deep Dive</div>
+    <h2 class="section-title">HTML5 <span>Form</span> Validation</h2>
+    <p class="lead-text">
+      HTML5 introduced built-in form validation that works without any JavaScript. Constraint validation attributes like <code>required</code>, <code>minlength</code>, <code>pattern</code>, and <code>type</code> are evaluated by the browser before submission.
+    </p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="demo-card-label">demo · html5 constraint validation</span>
+      </div>
+      <div class="demo-card-body">
+        <div class="code-block"><span class="cm">&lt;!-- HTML5 validation — zero JavaScript needed --&gt;</span>
+<span class="kw">&lt;form&gt;</span>
+  <span class="cm">&lt;!-- required: must not be empty --&gt;</span>
+  <span class="kw">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span>  <span class="attr">name</span>=<span class="str">"name"</span>     <span class="attr">required</span><span class="kw">&gt;</span>
+
+  <span class="cm">&lt;!-- type="email": browser validates format --&gt;</span>
+  <span class="kw">&lt;input</span> <span class="attr">type</span>=<span class="str">"email"</span> <span class="attr">name</span>=<span class="str">"email"</span>    <span class="attr">required</span><span class="kw">&gt;</span>
+
+  <span class="cm">&lt;!-- pattern: regex must match --&gt;</span>
+  <span class="kw">&lt;input</span> <span class="attr">type</span>=<span class="str">"text"</span>  <span class="attr">pattern</span>=<span class="str">"[A-Z]{3}[0-9]{4}"</span>
+         <span class="attr">title</span>=<span class="str">"3 uppercase letters + 4 digits"</span><span class="kw">&gt;</span>
+
+  <span class="cm">&lt;!-- min / max: numeric range --&gt;</span>
+  <span class="kw">&lt;input</span> <span class="attr">type</span>=<span class="str">"number"</span> <span class="attr">min</span>=<span class="str">"18"</span> <span class="attr">max</span>=<span class="str">"120"</span> <span class="attr">name</span>=<span class="str">"age"</span><span class="kw">&gt;</span>
+
+  <span class="cm">&lt;!-- minlength / maxlength: character count --&gt;</span>
+  <span class="kw">&lt;input</span> <span class="attr">type</span>=<span class="str">"password"</span> <span class="attr">minlength</span>=<span class="str">"8"</span> <span class="attr">name</span>=<span class="str">"pwd"</span><span class="kw">&gt;</span>
+
+  <span class="kw">&lt;button</span> <span class="attr">type</span>=<span class="str">"submit"</span><span class="kw">&gt;</span>Submit<span class="kw">&lt;/button&gt;</span>
+<span class="kw">&lt;/form&gt;</span></div>
+        <div class="info-box">
+          <strong>Client-side vs server-side validation:</strong> HTML5 constraint validation catches obvious errors before the network round-trip, improving UX. However, it is <em>never</em> a security measure — a determined user can bypass it with browser developer tools. Always re-validate on the server.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>ePortfolio · Full Stack Development · <span>HTML · CSS · Bootstrap · JavaScript</span></p>
+  <p style="margin-top:0.5rem;opacity:0.5;">Built with semantic HTML5, custom CSS, Bootstrap 5 &amp; Vanilla JS</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
